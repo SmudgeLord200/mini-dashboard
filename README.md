@@ -33,7 +33,7 @@ Write a frontend application which
 3.  allows the user to sort data by time and sensor type
 
 You can use any frameworks/libraries that you feel most comfortable with. 
-We work with [Angular 18](https://angular.dev/) so that would our preference but we do have React experience as well and are happy to learn about other frameworks as too.
+We work with [Angular 18](https://angular.dev/) so that would our preference but we do have React experience as well and are happy to learn about other frameworks too.
 
 #### Extra Tasks (two maximum)
 
