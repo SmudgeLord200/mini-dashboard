@@ -52,5 +52,6 @@ We work with [Angular 18](https://angular.dev/) so that would our preference but
 
 Please include with your submission:
 
-- An explanation of any design decisions you've made (e.g. choice of libs, why you left parts out?, how you could improve this further, etc).
+- An explanation of any design decisions you've made (e.g. choice of libs, why you made certain decisions etc).
+- A few lines on how you could improve this further.
 - A brief guide on how to run the project.
