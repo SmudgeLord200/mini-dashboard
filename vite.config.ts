@@ -16,4 +16,5 @@ export default defineConfig({
       inline: [/^(?!.*vitest).*@mui\/.*/]
     }
   },
+  base: '/mini-dashboard/'
 })

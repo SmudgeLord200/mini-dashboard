@@ -307,21 +307,22 @@ describe('ReactTable Component', () => {
         });
 
         // Change rows per page
-        const rowsPerPageSelect = screen.getByLabelText(/rows per page/i);
-        await user.click(rowsPerPageSelect);
-        // ensure the button is clicked
-        expect(user.click(rowsPerPageSelect)).toBeTruthy(); // Ensure the button is clicked
-        
-        // Use within to target the options within the opened menu.
-        const listbox = screen.getByRole('listbox');  // Get the listbox
+        // 1. Find the FormControl wrapper using the label
+        const rowsPerPageControl = screen.getByLabelText(/rows per page/i);
+        expect(within(rowsPerPageControl).queryByRole('combobox')).toBeInTheDocument()
+        const combobox = within(rowsPerPageControl).getByRole('combobox');
+        await user.click(combobox)
+
+        // Now, wait for the listbox to appear and find the option
+        const listbox = await screen.findByRole('listbox');
         const option10 = within(listbox).getByRole('option', { name: 'Show 10' });
         await user.click(option10);
 
-        // // State after changing rows per page: Page 1 of 1 (5 items, 10 per page)
-        // await waitFor(() => {
-        //     expect(screen.getByText(/page 1 of 1/i)).toBeInTheDocument();
-        //     expect(within(table).getByText('Sensor 1')).toBeInTheDocument();
-        //     expect(within(table).getByText('Sensor 5')).toBeInTheDocument(); // Check last sensor is visible
-        // });
+        // State after changing rows per page: Page 1 of 1 (5 items, 10 per page)
+        await waitFor(() => {
+            expect(screen.getByText(/page 1 of 1/i)).toBeInTheDocument();
+            expect(within(table).getByText('Sensor 1')).toBeInTheDocument();
+            expect(within(table).getByText('Sensor 5')).toBeInTheDocument(); // Check last sensor is visible
+        });
     });
 });
