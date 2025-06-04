@@ -6,19 +6,12 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from 'recharts';
-import { styled } from '@mui/material/styles';
-import { Box, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Container } from '@mui/material';
 import { SampleData } from '@/type';
-
-// Styled components for better Material UI integration
-const StyledPaper = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(3),
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[1],
-}));
+import { StyledPaper } from '@/StyledComponents';
 
 const SensorReadingRadialBarChart = ({ data }: { data: SampleData[] }) => {
     const [chartData, setChartData] = useState<{ name: string; value: number; fill: string }[]>([]);

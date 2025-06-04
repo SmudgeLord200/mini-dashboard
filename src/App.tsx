@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import ReactTable from './components/Table'
+import ReactTable from './pages/Table'
 import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, PaginationState, useReactTable } from '@tanstack/react-table'
-import { columns } from './components/Columns'
+import { columns } from './pages/Columns'
 import { Container, CircularProgress, Tab, Tabs, Box, Typography, styled, Stack, Tooltip, Button } from '@mui/material'
 import Brightness4Icon from '@mui/icons-material/Brightness4'; 
 import Brightness7Icon from '@mui/icons-material/Brightness7'; 
-import Dashboard from './components/Charts'
+import Dashboard from './pages/Charts'
 import { useFetchData } from './hooks/useFetchData'
 import { CustomThemeProvider, useThemeContext } from './context/ThemeProvider' 
 

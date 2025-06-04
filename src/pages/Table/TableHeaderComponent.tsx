@@ -1,22 +1,11 @@
+import { StyledTableCell } from "@/StyledComponents"
 import { SampleData } from "@/type"
-import { TableCell, TableHead, TableRow, styled } from "@mui/material"
+import { TableHead, TableRow } from "@mui/material"
 import { flexRender, HeaderGroup } from "@tanstack/react-table"
 
 interface TableHeaderComponentProps {
     headerGroups: HeaderGroup<SampleData>[]
 }
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    color: theme.palette.customText.tableHeader,
-    fontWeight: "bold",
-    padding: theme.spacing(1),
-    textAlign: "center",
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    "&:hover": {
-        backgroundColor: theme.palette.customAction.hoverBackground,
-    },
-}));
-
 
 const TableHeaderComponent = ({ headerGroups }: TableHeaderComponentProps) => {
 

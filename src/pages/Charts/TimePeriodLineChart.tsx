@@ -1,63 +1,13 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { CircularProgress, Container, FormControl as MuiFormControl, InputLabel, MenuItem, Stack, styled, Checkbox, ListItemText, Box } from '@mui/material' // Renamed FormControl to avoid conflict
-import { Typography, IconButton, Tooltip as MuiTooltip } from '@mui/material' // Added IconButton and Tooltip
+import { CircularProgress, InputLabel, MenuItem, Checkbox, ListItemText, Box } from '@mui/material'
+import { Typography, IconButton, Tooltip as MuiTooltip } from '@mui/material' 
 import { useTheme } from '@mui/material/styles'
 import { Chip } from '@mui/material'
-import FilterAltOffIcon from '@mui/icons-material/FilterAltOff'; // Import clear filter icon
-import { Box as MuiBox } from '@mui/material' // Renamed Box
-import { SampleData } from '@/type'
-
-type MultiLineChartData = {
-    time: string // HH:MM format (representing time of day)
-    [sensorType: string]: number | string | null
-}
-
-// --- Styled Components ---
-
-const ChartContainer = styled(Container)(({ theme }) => ({
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-}));
-
-const FilterStack = styled(Stack)(({ theme }) => ({
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    alignItems: 'center',
-    justifyContent: 'center'
-}));
-
-const FilterFormControl = styled(MuiFormControl)(({ theme }) => ({
-    backgroundColor: theme.palette.background.paper, // Use paper background for inputs
-    minWidth: 200,
-    '& .MuiInputBase-root': { // Target input base for text color if needed
-        color: theme.palette.text.primary,
-    },
-    '& .MuiInputLabel-root': { // Target label
-        color: theme.palette.text.secondary,
-    },
-}));
-
-const ChipBox = styled(MuiBox)({ // Simple Box for Chip layout
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 0.5,
-});
-
-const EmptyStateTypography = styled(Typography)(({ theme }) => ({
-    marginTop: theme.spacing(2),
-    color: theme.palette.text.secondary,
-}));
-
-const LoadingStack = styled(Stack)(({ theme }) => ({
-    marginTop: theme.spacing(4),
-    alignItems: 'center',
-    spacing: 1,
-    color: theme.palette.text.secondary, // Apply secondary text color to the stack
-}));
-
-// --- Component ---
+import FilterAltOffIcon from '@mui/icons-material/FilterAltOff'; 
+import { MultiLineChartData, SampleData } from '@/type'
+import { ChartContainer, FilterStack, FilterFormControl, ChipBox, EmptyStateTypography, LoadingStack } from '@/StyledComponents'
 
 const TimePeriodLineChart = ({ data }: { data: SampleData[] }) => {
     const [selectedSensors, setSelectedSensors] = useState<string[]>([])

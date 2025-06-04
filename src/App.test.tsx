@@ -1,13 +1,12 @@
 import { describe, it, expect, vi, beforeEach, Mock } from 'vitest';
 import { render, screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'; // Keep userEvent
-import App from './App'; // Import the main App component
+import userEvent from '@testing-library/user-event'; 
+import App from './App'; 
 import { useFetchData } from './hooks/useFetchData';
 import { CustomThemeProvider, useThemeContext } from './context/ThemeProvider';
 import { SampleData } from './type';
 
 // --- Mocks ---
-
 // Mock the useFetchData hook
 vi.mock('./hooks/useFetchData');
 const mockUseFetchData = useFetchData as Mock;
@@ -20,7 +19,7 @@ vi.mock('./context/ThemeProvider', async (importOriginal) => {
     const actual = await importOriginal() as typeof import('./context/ThemeProvider');
     return {
         ...actual, // Keep original exports like CustomThemeProvider
-        useThemeContext: vi.fn(), // Mock the hook
+        useThemeContext: vi.fn(), 
     };
 });
 const mockUseThemeContext = useThemeContext as Mock;
@@ -83,7 +82,7 @@ describe('App Component', () => {
     });
 
     it('should render loading state initially', () => {
-        renderWithTheme(<App />); // Use renderWithTheme
+        renderWithTheme(<App />); 
         expect(screen.getByRole('progressbar')).toBeInTheDocument();
         // Tabs should be visible, but their content should not
         expect(screen.getByRole('tab', { name: 'Chart' })).toBeInTheDocument();
@@ -101,7 +100,7 @@ describe('App Component', () => {
             reloadData: vi.fn(),
         });
 
-        renderWithTheme(<App />); // Use renderWithTheme
+        renderWithTheme(<App />); 
         expect(screen.getByText(`Error loading dashboard data: ${errorMessage}`)).toBeInTheDocument();
         expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
         expect(screen.queryByText('Chart')).not.toBeInTheDocument(); // Tabs shouldn't be visible on error
@@ -115,7 +114,7 @@ describe('App Component', () => {
             reloadData: vi.fn(),
         });
 
-        renderWithTheme(<App />); // Use renderWithTheme
+        renderWithTheme(<App />); 
         expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
         expect(screen.getByRole('tab', { name: 'Chart' })).toBeInTheDocument();
         expect(screen.getByRole('tab', { name: 'Table' })).toBeInTheDocument();
@@ -134,7 +133,7 @@ describe('App Component', () => {
             reloadData: vi.fn(),
         });
         const user = userEvent.setup();
-        renderWithTheme(<App />); // Use renderWithTheme
+        renderWithTheme(<App />); 
 
         // Initially Chart is visible
         expect(screen.getByText(/Sensor Readings Over Time/i)).toBeInTheDocument(); // Check for Chart content
@@ -161,7 +160,7 @@ describe('App Component', () => {
         // Ensure the mock context hook returns our spy function
         mockUseThemeContext.mockReturnValue({ mode: 'light', toggleColorMode: mockToggleColorMode });
 
-        renderWithTheme(<App />); // Use renderWithTheme
+        renderWithTheme(<App />); 
 
         const themeToggleButton = screen.getByRole('button', { name: /toggle color mode/i });
         await user.click(themeToggleButton);

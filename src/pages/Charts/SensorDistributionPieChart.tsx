@@ -1,29 +1,10 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { styled } from '@mui/material/styles';
-import { Box, Container, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { SampleData } from '@/type';
-
-// --- Styled Components ---
-const ChartContainer = styled(Container)(({ theme }) => ({
-    paddingTop: theme.spacing(1), // Reduced top padding slightly
-    paddingBottom: theme.spacing(2),
-}));
-
-const ChartPaper = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(3),
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[1],
-    backgroundColor: theme.palette.customChart.background, // Use chart background
-}));
-
-const ChartTitle = styled(Typography)(({ theme }) => ({
-    marginBottom: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.customChart.text, // Use chart text color
-}));
+import { ChartContainer, ChartTitle, ChartPaper } from '@/StyledComponents';
 
 const SensorDistributionPieChart = ({ data }: { data: SampleData[] }) => {
     const [chartData, setChartData] = useState<{ name: string; value: number }[]>([]);

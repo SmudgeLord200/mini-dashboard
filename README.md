@@ -15,7 +15,8 @@ This project utilizes the following technologies:
 *   **TanStack Table (React Table):** Integrated for creating organized and feature-rich tables, offering functionalities like sorting, filtering, and pagination.
 *   **Recharts:** Used as the charting library for visualizing data, specifically for displaying line charts of readings over time.
 *   **Vitest:** Chosen for running unit and integration tests within the Vite ecosystem, offering a fast and modern testing experience.
-*   **faker:** Generate fake readings data of the devices
+*   **faker:** Generated fake readings data of the devices
+*   **motion:** Applied animation effects on some components
 
 ## Getting Started
 
